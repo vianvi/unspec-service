@@ -40,5 +40,47 @@
     "CaseFieldID": "claimValue",
     "UserRole": "caseworker-cmc-solicitor",
     "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "CaseFieldID": "exampleDynamicList",
+    "UserRole": "caseworker-cmc-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "CaseFieldID": "exampleLabel",
+    "UserRole": "caseworker-cmc-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "CaseFieldID": "exampleRadio",
+    "UserRole": "caseworker-cmc-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "CaseFieldID": "exampleLabel2",
+    "UserRole": "caseworker-cmc-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "CaseFieldID": "exampleText",
+    "UserRole": "caseworker-cmc-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "CaseFieldID": "exampleText2",
+    "UserRole": "caseworker-cmc-solicitor",
+    "CRUD": "CRU"
   }
 ]

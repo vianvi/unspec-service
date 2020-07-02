@@ -46,5 +46,55 @@
     "Label": "Enter expected claim value",
     "FieldType": "ClaimValue",
     "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "ID": "exampleDynamicList",
+    "Label": "Fee account number",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "ID": "exampleLabel",
+    "Label": "Fee account numbers",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "ID": "exampleRadio",
+    "Label": "Fee account number option",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "Options",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "ID": "exampleLabel2",
+    "Label": "Fee account number option",
+    "FieldType": "TextArea",
+    "FieldTypeParameter": "Options",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "ID": "exampleText",
+    "Label": "Fee account number",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "PERSONAL_INJURY",
+    "ID": "exampleText2",
+    "Label": "Other fee account number",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
