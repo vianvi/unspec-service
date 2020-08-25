@@ -21,6 +21,7 @@ import uk.gov.hmcts.reform.unspec.config.ClaimIssueConfiguration;
 import uk.gov.hmcts.reform.unspec.helpers.CaseDetailsConverter;
 import uk.gov.hmcts.reform.unspec.model.CaseData;
 import uk.gov.hmcts.reform.unspec.model.ClaimValue;
+import uk.gov.hmcts.reform.unspec.model.Party;
 import uk.gov.hmcts.reform.unspec.model.common.Element;
 import uk.gov.hmcts.reform.unspec.model.documents.CaseDocument;
 import uk.gov.hmcts.reform.unspec.model.documents.Document;
@@ -121,12 +122,28 @@ class CreateClaimCallbackHandlerTest extends BaseCallbackHandlerTest {
     @Nested
     class AboutToSubmitCallback {
 
+        private final Party respondent = Party.builder()
+            .individualFirstName("Brian")
+            .individualLastName("Lara")
+            .type(Party.Type.INDIVIDUAL)
+            .build();
+
+        private final Party claimant = Party.builder()
+            .individualFirstName("John")
+            .individualLastName("Smith")
+            .type(Party.Type.INDIVIDUAL)
+            .build();
+
         @Test
         void shouldAddClaimIssuedDateAndSubmittedAt_whenInvoked() {
             when(issueDateCalculator.calculateIssueDay(any(LocalDateTime.class))).thenReturn(LocalDate.now());
             when(deadlinesCalculator.calculateConfirmationOfServiceDeadline(any(LocalDate.class)))
                 .thenReturn(LocalDate.now().atTime(23, 59, 59));
-            CallbackParams params = callbackParamsOf(new HashMap<>(), CallbackType.ABOUT_TO_SUBMIT);
+
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("respondent", respondent);
+            data.put("claimant", claimant);
+            CallbackParams params = callbackParamsOf(data, CallbackType.ABOUT_TO_SUBMIT);
 
             AboutToStartOrSubmitCallbackResponse response = (AboutToStartOrSubmitCallbackResponse) handler
                 .handle(params);
@@ -137,6 +154,7 @@ class CreateClaimCallbackHandlerTest extends BaseCallbackHandlerTest {
                 LocalDate.now().atTime(23, 59, 59)
             );
             assertThat(response.getData()).containsKey("claimSubmittedDateTime");
+            assertThat(response.getData()).containsEntry("caseName", "John Smith vs Brian Lara");
         }
 
         @Test
@@ -150,10 +168,11 @@ class CreateClaimCallbackHandlerTest extends BaseCallbackHandlerTest {
             var response = (AboutToStartOrSubmitCallbackResponse) handler.handle(params);
 
             CaseData caseData = objectMapper.convertValue(response.getData(), CaseData.class);
-            assertThat(caseData.getSystemGeneratedCaseDocuments()).isNotEmpty()
-                .contains(Element.<CaseDocument>builder().value(getCaseDocument()).build());
 
+            assertThat(caseData.getSystemGeneratedCaseDocuments())
+                .containsOnly(Element.<CaseDocument>builder().value(getCaseDocument()).build());
             assertThat(caseData.getClaimIssuedDate()).isEqualTo(LocalDate.now());
+            assertThat(response.getData()).containsEntry("caseName", "Mr John Smith vs Mr John Smith");
         }
 
         Map<String, Object> getCaseData() throws JsonProcessingException {

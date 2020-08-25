@@ -21,6 +21,7 @@ import uk.gov.hmcts.reform.unspec.model.documents.DocumentType;
 import uk.gov.hmcts.reform.unspec.service.DeadlinesCalculator;
 import uk.gov.hmcts.reform.unspec.service.IssueDateCalculator;
 import uk.gov.hmcts.reform.unspec.service.docmosis.sealedclaim.SealedClaimFormGenerator;
+import uk.gov.hmcts.reform.unspec.utils.CaseNameUtils;
 import uk.gov.hmcts.reform.unspec.utils.ElementUtils;
 
 import java.time.LocalDate;
@@ -109,6 +110,7 @@ public class CreateClaimCallbackHandler extends CallbackHandler {
             deadlinesCalculator.calculateConfirmationOfServiceDeadline(issueDate)
         );
         data.put("systemGeneratedCaseDocuments", ElementUtils.wrapElements(sealedClaim));
+        data.put("caseName", CaseNameUtils.toCaseName.apply(caseData));
 
         return AboutToStartOrSubmitCallbackResponse.builder()
             .data(data)

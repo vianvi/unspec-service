@@ -8,9 +8,8 @@ import java.util.function.Function;
 
 public class CaseNameUtils {
 
-    //TODO Need to confirm the case name logic
     public static final Function<CaseData, String> toCaseName = caseData ->
-        fetchClaimantName(caseData) + " v " + fetchDefendantName(caseData);
+        fetchClaimantName(caseData) + " vs " + fetchDefendantName(caseData);
 
     private CaseNameUtils() {
         //NO-OP

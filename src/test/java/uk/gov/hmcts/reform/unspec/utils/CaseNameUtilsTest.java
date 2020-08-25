@@ -26,7 +26,7 @@ class CaseNameUtilsTest {
                             .build())
             .build();
         String caseName = toCaseName.apply(caseData);
-        assertThat(caseName).isNotNull().isEqualTo("Mr. Sam Clark v Mr. Alex Richards");
+        assertThat(caseName).isNotNull().isEqualTo("Mr. Sam Clark vs Mr. Alex Richards");
     }
 
     @Test
@@ -53,7 +53,7 @@ class CaseNameUtilsTest {
             .build();
 
         String caseName = toCaseName.apply(caseData);
-        assertThat(caseName).isEqualTo("1 Mr. Sam Clark & 2 Mr. White Clark v Mr. Alex Richards");
+        assertThat(caseName).isEqualTo("1 Mr. Sam Clark & 2 Mr. White Clark vs Mr. Alex Richards");
     }
 
     @Test
@@ -80,7 +80,7 @@ class CaseNameUtilsTest {
             .build();
 
         String caseName = toCaseName.apply(caseData);
-        assertThat(caseName).isEqualTo("Mr. Sam Clark v 1 Mr. Alex Richards & 2 Mr. White Richards");
+        assertThat(caseName).isEqualTo("Mr. Sam Clark vs 1 Mr. Alex Richards & 2 Mr. White Richards");
     }
 
     @Test
@@ -102,7 +102,7 @@ class CaseNameUtilsTest {
             .build();
 
         String caseName = toCaseName.apply(caseData);
-        assertThat(caseName).isEqualTo("Mrs. Georgina Hammersmith T/A EuroStar v Mr. Alex Richards");
+        assertThat(caseName).isEqualTo("Mrs. Georgina Hammersmith T/A EuroStar vs Mr. Alex Richards");
     }
 
     @Test
@@ -124,7 +124,7 @@ class CaseNameUtilsTest {
             .build();
 
         String caseName = toCaseName.apply(caseData);
-        assertThat(caseName).isEqualTo("Mr. White Richards v Mr. Boris Johnson T/A UberFlip");
+        assertThat(caseName).isEqualTo("Mr. White Richards vs Mr. Boris Johnson T/A UberFlip");
     }
 
     @Test
@@ -147,6 +147,6 @@ class CaseNameUtilsTest {
             .build();
 
         String caseName = toCaseName.apply(caseData);
-        assertThat(caseName).isEqualTo("Mrs. Georgina Hammersmith T/A EuroStar v Mr. Boris Johnson T/A UberFlip");
+        assertThat(caseName).isEqualTo("Mrs. Georgina Hammersmith T/A EuroStar vs Mr. Boris Johnson T/A UberFlip");
     }
 }
