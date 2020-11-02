@@ -35,10 +35,7 @@ public class EventAllowedAspect {
     }
 
     @Around("eventAllowedPointCut() && args(callbackParams))")
-    public Object checkEventAllowed(
-        ProceedingJoinPoint joinPoint,
-        CallbackParams callbackParams
-    ) throws Throwable {
+    public Object checkEventAllowed(ProceedingJoinPoint joinPoint, CallbackParams callbackParams) throws Throwable {
         if (callbackParams.getType() != ABOUT_TO_START) {
             return joinPoint.proceed();
         }
@@ -47,10 +44,7 @@ public class EventAllowedAspect {
         if (flowStateAllowedEventService.isAllowed(caseDetails, caseEvent)) {
             return joinPoint.proceed();
         } else {
-            log.info(format(
-                "%s is not allowed on the case id %s",
-                caseEvent.getDisplayName(), caseDetails.getId()
-            ));
+            log.info(format("%s is not allowed on the case id %s", caseEvent.getDisplayName(), caseDetails.getId()));
             return AboutToStartOrSubmitCallbackResponse.builder()
                 .errors(List.of(ERROR_MESSAGE))
                 .build();
