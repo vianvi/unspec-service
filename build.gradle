@@ -246,7 +246,7 @@ jacocoTestReport.dependsOn {
 
 
 pitest {
-  targetClasses = ['uk.gov.hmcts.reform.unspec.utils.*']
+  targetClasses = ['uk.gov.hmcts.reform.unspec.utils.CaseNameUtils']
   excludedClasses = ['uk.gov.hmcts.reform.unspec.advice.*',
                      'uk.gov.hmcts.reform.unspec.config.*',
                      'uk.gov.hmcts.reform.unspec.enums.*',
